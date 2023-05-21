@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "3cdd704d-9a16-43c5-8004-df3b63746e74",
+		"name": "card_holder_service_api_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27531509"
+	},
+	"item": [
+		{
+			"name": "CREATE NEW - Register new card holder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"New\",\n  \"lastName\": \"User\",\n  \"oib\": \"00000000000\",\n  \"statusId\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/card-holders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"card-holders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH - Find card holder by oib",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"oib\": \"00000000000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/card-holders/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"card-holders",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE - Update any field by oib",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lastName\": \"User2\",\n  \"oib\": \"00000000000\",\n  \"statusId\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/card-holders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"card-holders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GENERATE FILE - Create file by oib",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"oib\": \"00000000000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/card-holders/generate-card",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"card-holders",
+						"generate-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOFT DELETE - Delete card holder by oib (set card holder and file to INACTIVE)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"oib\": \"00000000000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/card-holders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"card-holders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

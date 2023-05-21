@@ -1,0 +1,36 @@
+version: "3.3"
+
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_SUPER_USER_USERNAME}
+      POSTGRES_PASSWORD: ${DB_SUPER_SECRET_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+
+  babylon_card_holder_service:
+    build:
+      context: ./services/babylon-card-holder-service
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./services/babylon-card-holder-service/generated_cards:/app/generated_cards
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_APP_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_APP_PASSWORD}
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data: {}
